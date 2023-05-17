@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { Stack } from "@mui/material";
 
 import SettingsDrawer from "./Components/Account/AccountSettingsDrawer";
+import NewCourse from "./Components/NewCourse/NewCourse";
 import CourseList from "./Components/Course/CourseList";
 import CourseSearch from "./Components/Course/CourseSearch";
 import CourseCategoryTabs from "./Components/Course/CourseCategoryTab";
@@ -23,48 +24,53 @@ const headerTextStyle = {
   pb: 6,
 };
 
+const DUMMY_COURSES = [
+  {
+    id: "AB1501",
+    name: "MARKETING",
+    description: "Learn and the apply the basic principles of marketing",
+    // grade: "",
+    // date: new Date(2020, 7, 14),
+  },
+  {
+    id: "BC2407",
+    name: "ANALYTICS",
+    description: "Modelling data to predict trends and solve problems",
+    // grade: "",
+    // date: new Date(2020, 7, 14),
+  },
+  {
+    id: "SC2000",
+    name: "PROB & STAT FOR COMPUTING",
+    description: "Probabilities",
+    // grade: "",
+    // date: new Date(2020, 7, 14),
+  },
+  {
+    id: "SC2001",
+    name: "ALGORITHM DESIGN & ANALYSIS",
+    description: "Sorting Algorithms and Dynamic Programming",
+    // grade: "",
+    // date: new Date(2020, 7, 14),
+  },
+
+  {
+    id: "SC2002",
+    name: "OBJECT ORIENTED DES & PROG",
+    description: "Java and C++",
+    // grade: "",
+    // date: new Date(2020, 7, 14),
+  },
+];
+
 function App() {
-  const DUMMY_COURSES = [
-    {
-      id: "AB1501",
-      name: "MARKETING",
-      description: "Learn and the apply the basic principles of marketing",
-      // grade: "",
-      // date: new Date(2020, 7, 14),
-    },
-    {
-      id: "BC2407",
-      name: "ANALYTICS",
-      description: "Modelling data to predict trends and solve problems",
-      // grade: "",
-      // date: new Date(2020, 7, 14),
-    },
-    {
-      id: "SC2000",
-      name: "PROB & STAT FOR COMPUTING",
-      description: "Probabilities",
-      // grade: "",
-      // date: new Date(2020, 7, 14),
-    },
-    {
-      id: "SC2001",
-      name: "ALGORITHM DESIGN & ANALYSIS",
-      description: "Sorting Algorithms and Dynamic Programming",
-      // grade: "",
-      // date: new Date(2020, 7, 14),
-    },
-
-    {
-      id: "SC2002",
-      name: "OBJECT ORIENTED DES & PROG",
-      description: "Java and C++",
-      // grade: "",
-      // date: new Date(2020, 7, 14),
-    },
-  ];
-
   const [courses, setCourses] = useState(DUMMY_COURSES);
-
+  function addCourseHandler(course) {
+    // depends on previous state
+    setCourses((prevCoruses) => {
+      return [course, ...prevCoruses];
+    });
+  }
   return (
     <div>
       <Box sx={headerBoxStyle}>
@@ -76,6 +82,7 @@ function App() {
       </Box>
 
       <Box sx={courseStyle}>
+        <NewCourse onAddCourse={addCourseHandler} />;
         <CourseCategoryTabs />
         <CourseSearch />
         <CourseSorter />
