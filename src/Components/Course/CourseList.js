@@ -24,6 +24,7 @@ function CourseList(props) {
           description={course.description}
           progress={course.progress}
           category={course.category}
+          url={course.url}
           //    grade = {course.grade}
           //   date={course.date}
         />
