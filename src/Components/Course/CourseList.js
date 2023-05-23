@@ -20,7 +20,7 @@ function CourseList(props) {
         <Course
           key={course.id}
           id={course.id}
-          name={course.name}
+          name={course.id + " " + course.name}
           description={course.description}
           progress={course.progress}
           category={course.category}

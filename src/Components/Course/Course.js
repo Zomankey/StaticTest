@@ -16,10 +16,7 @@ function Course(props) {
   return (
     <List component="nav" aria-label="">
       <ListItemButton sx={button}>
-        <ListItemText
-          primary={props.id + " " + props.name}
-          secondary={props.description}
-        />
+        <ListItemText primary={props.name} secondary={props.description} />
       </ListItemButton>
     </List>
   );

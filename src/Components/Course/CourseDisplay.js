@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import CourseList from "./CourseList";
 import CourseSearch from "./CourseSearch";
@@ -16,15 +16,30 @@ function CourseDisplay(props) {
   }
 
   const filteredCategoryCourse = props.courses.filter((course) => {
-    return course.category == filteredCategory;
+    return course.category === filteredCategory;
+  });
+
+  const [searchText, setSearch] = useState("");
+  function onSearch(searchText) {
+    setSearch(searchText);
+  }
+
+  const filteredSearchCourses = filteredCategoryCourse.filter((course) => {
+    if (props.input === "") {
+      return course;
+    }
+    //return the item which contains the user input
+    else {
+      return course.name.toLowerCase().includes(searchText);
+    }
   });
 
   return (
     <Box sx={courseStyle}>
       <CourseCategoryTabs onSelectCategoryFilter={addCategoryFilter} />
-      <CourseSearch />
+      <CourseSearch onSearch={onSearch} />
       <CourseSorter />
-      <CourseList courses={filteredCategoryCourse} />
+      <CourseList courses={filteredSearchCourses} />
     </Box>
   );
 }
