@@ -27,7 +27,6 @@ function Course(props) {
       setIsClicked(false);
     } else {
       setIsClicked(true);
-      props.changeProgress();
     }
   }
 

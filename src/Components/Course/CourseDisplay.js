@@ -37,12 +37,39 @@ function CourseDisplay(props) {
     }
   });
 
+  const [sort, setSort] = useState("Recent");
+  function selectSort(selectedsort) {
+    setSort(selectedsort);
+  }
+
+  const [sortedCourses, setSortedCourses] = useState(filteredSearchCourses);
+
+  const SortCourses = (filteredSearchCourses) => {
+    if (sort === "Recent") {
+      setSortedCourses(filteredSearchCourses);
+    } else if (sort === "Ascending") {
+      setSortedCourses(
+        [...filteredSearchCourses].sort((a, b) => (a.name > b.name ? 1 : -1))
+      );
+    } else if (sort === "Descending") {
+      setSortedCourses(
+        [...filteredSearchCourses].sort((a, b) => (a.name > b.name ? -1 : 1))
+      );
+    } else if (sort === "") {
+      setSortedCourses(filteredSearchCourses);
+    }
+  };
+
   return (
     <Box sx={courseStyle}>
       <CourseCategoryTabs onSelectCategoryFilter={addCategoryFilter} />
       <CourseSearch onSearch={onSearch} />
-      <CourseSorter />
-      <CourseList courses={filteredSearchCourses} />
+      <CourseSorter
+        selectSort={selectSort}
+        courses={filteredSearchCourses}
+        SortCourses={SortCourses}
+      />
+      <CourseList courses={sortedCourses} />
     </Box>
   );
 }

@@ -50,7 +50,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function CourseSorter() {
+export default function CourseSorter(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -58,6 +58,21 @@ export default function CourseSorter() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleAscending = () => {
+    setAnchorEl(null);
+    props.selectSort("Ascending");
+    props.SortCourses(props.courses);
+  };
+  const handleDescending = () => {
+    setAnchorEl(null);
+    props.selectSort("Descending");
+    props.SortCourses(props.courses);
+  };
+  const handleRecent = () => {
+    setAnchorEl(null);
+    props.selectSort("Recent");
+    props.SortCourses(props.courses);
   };
 
   return (
@@ -84,15 +99,15 @@ export default function CourseSorter() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handleAscending} disableRipple>
           Ascending
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handleDescending} disableRipple>
           Descending
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handleRecent} disableRipple>
           Upload Recency
         </MenuItem>
       </StyledMenu>
