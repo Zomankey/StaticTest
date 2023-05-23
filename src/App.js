@@ -4,13 +4,8 @@ import { Stack } from "@mui/material";
 
 import SettingsDrawer from "./Components/Account/AccountSettingsDrawer";
 import NewCourse from "./Components/NewCourse/NewCourse";
-import CourseList from "./Components/Course/CourseList";
-import CourseSearch from "./Components/Course/CourseSearch";
-import CourseCategoryTabs from "./Components/Course/CourseCategoryTab";
-import CourseSorter from "./Components/Course/CourseSorter";
 import CourseProgressDrawer from "./Components/Course/CourseProgressDrawer";
-
-const courseStyle = { bgcolor: "#c1cbe0", mx: 0.5, fontSize: 14, pt: 1 };
+import CourseDisplay from "./Components/Course/CourseDisplay";
 
 const headerBoxStyle = {
   bgcolor: "#405686",
@@ -29,6 +24,8 @@ const DUMMY_COURSES = [
     id: "AB1501",
     name: "MARKETING",
     description: "Learn and the apply the basic principles of marketing",
+    progress: "Current",
+    category: "Sales and Marketing",
     // grade: "",
     // date: new Date(2020, 7, 14),
   },
@@ -36,6 +33,8 @@ const DUMMY_COURSES = [
     id: "BC2407",
     name: "ANALYTICS",
     description: "Modelling data to predict trends and solve problems",
+    progress: "Current",
+    category: "Data Science",
     // grade: "",
     // date: new Date(2020, 7, 14),
   },
@@ -43,6 +42,8 @@ const DUMMY_COURSES = [
     id: "SC2000",
     name: "PROB & STAT FOR COMPUTING",
     description: "Probabilities",
+    progress: "Completed",
+    category: "Computing",
     // grade: "",
     // date: new Date(2020, 7, 14),
   },
@@ -50,6 +51,8 @@ const DUMMY_COURSES = [
     id: "SC2001",
     name: "ALGORITHM DESIGN & ANALYSIS",
     description: "Sorting Algorithms and Dynamic Programming",
+    progress: "Uncompleted",
+    category: "Computing",
     // grade: "",
     // date: new Date(2020, 7, 14),
   },
@@ -58,6 +61,8 @@ const DUMMY_COURSES = [
     id: "SC2002",
     name: "OBJECT ORIENTED DES & PROG",
     description: "Java and C++",
+    progress: "Uncompleted",
+    category: "Computing",
     // grade: "",
     // date: new Date(2020, 7, 14),
   },
@@ -80,14 +85,8 @@ function App() {
         </Stack>
         <Box sx={headerTextStyle}>Learning Management System</Box>
       </Box>
-
-      <Box sx={courseStyle}>
-        <NewCourse onAddCourse={addCourseHandler} />;
-        <CourseCategoryTabs />
-        <CourseSearch />
-        <CourseSorter />
-        <CourseList courses={courses} />
-      </Box>
+      <CourseDisplay courses={courses} />
+      <NewCourse onAddCourse={addCourseHandler} />
     </div>
   );
 }

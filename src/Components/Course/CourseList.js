@@ -1,8 +1,17 @@
 import Course from "./Course";
+import Box from "@mui/material/Box";
+
+const headerTextStyle = {
+  color: "#405686",
+  fontSize: 30,
+  fontWeight: "Bold",
+  textAlign: "center",
+  pb: 6,
+};
 
 function CourseList(props) {
   if (props.courses.length === 0) {
-    return <h2> No courses found.</h2>;
+    return <Box sx={headerTextStyle}>No Courses Found</Box>;
   }
 
   return (
@@ -13,6 +22,8 @@ function CourseList(props) {
           id={course.id}
           name={course.name}
           description={course.description}
+          progress={course.progress}
+          category={course.category}
           //    grade = {course.grade}
           //   date={course.date}
         />

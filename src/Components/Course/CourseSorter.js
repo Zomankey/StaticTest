@@ -85,15 +85,15 @@ export default function CourseSorter() {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose} disableRipple>
-          Popularity
+          Ascending
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
         <MenuItem onClick={handleClose} disableRipple>
-          Recently Added
+          Descending
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
         <MenuItem onClick={handleClose} disableRipple>
-          Rating
+          Upload Recency
         </MenuItem>
       </StyledMenu>
     </Stack>
