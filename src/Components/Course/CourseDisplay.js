@@ -30,7 +30,10 @@ function CourseDisplay(props) {
     }
     //return the item which contains the user input
     else {
-      return course.name.toLowerCase().includes(searchText);
+      return (
+        course.name.toLowerCase().includes(searchText) ||
+        course.id.toLowerCase().includes(searchText)
+      );
     }
   });
 
