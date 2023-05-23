@@ -27,6 +27,7 @@ function Course(props) {
       setIsClicked(false);
     } else {
       setIsClicked(true);
+      props.changeProgress();
     }
   }
 
@@ -41,7 +42,7 @@ function Course(props) {
       </ListItemButton>
       {isClicked && (
         <Box sx={courseStyle}>
-          <ReactPlayer url={props.url} />
+          <ReactPlayer url={props.url} light={true} playing={true} />
         </Box>
       )}
     </List>

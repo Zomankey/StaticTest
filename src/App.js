@@ -31,10 +31,13 @@ function App() {
   return (
     <div>
       <Box sx={headerBoxStyle}>
-        <Stack direction="row" justifyContent="space-between">
-          <CourseProgressDrawer />
+        <Stack direction="row" justifyContent="flex-end">
           <SettingsDrawer />
         </Stack>
+        {/* <Stack direction="row" justifyContent="space-between">
+          <CourseProgressDrawer />
+          <SettingsDrawer />
+        </Stack> */}
         <Box sx={headerTextStyle}>Learning Management System</Box>
       </Box>
       <CourseDisplay courses={courses} />

@@ -1,5 +1,7 @@
-import Course from "./Course";
+import { useState } from "react";
 import Box from "@mui/material/Box";
+
+import Course from "./Course";
 
 const headerTextStyle = {
   color: "#405686",
@@ -10,6 +12,12 @@ const headerTextStyle = {
 };
 
 function CourseList(props) {
+  const [progress, setProgress] = useState("");
+
+  function changeProgress() {
+    setProgress("Completed");
+  }
+
   if (props.courses.length === 0) {
     return <Box sx={headerTextStyle}>No Courses Found</Box>;
   }
@@ -25,6 +33,8 @@ function CourseList(props) {
           progress={course.progress}
           category={course.category}
           url={course.url}
+          changeProgress={changeProgress}
+          //favourite={course.favourite}
           //    grade = {course.grade}
           //   date={course.date}
         />
