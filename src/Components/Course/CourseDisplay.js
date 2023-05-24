@@ -42,23 +42,21 @@ function CourseDisplay(props) {
     setSort(selectedsort);
   }
 
-  const [sortedCourses, setSortedCourses] = useState(filteredSearchCourses);
-
   const SortCourses = (filteredSearchCourses) => {
     if (sort === "Recent") {
-      setSortedCourses(filteredSearchCourses);
+      return filteredSearchCourses;
     } else if (sort === "Ascending") {
-      setSortedCourses(
-        [...filteredSearchCourses].sort((a, b) => (a.name > b.name ? 1 : -1))
+      return [...filteredSearchCourses].sort((a, b) =>
+        a.name > b.name ? 1 : -1
       );
     } else if (sort === "Descending") {
-      setSortedCourses(
-        [...filteredSearchCourses].sort((a, b) => (a.name > b.name ? -1 : 1))
+      return [...filteredSearchCourses].sort((a, b) =>
+        a.name > b.name ? -1 : 1
       );
-    } else if (sort === "") {
-      setSortedCourses(filteredSearchCourses);
     }
   };
+
+  const sortedCourses = SortCourses(filteredSearchCourses);
 
   return (
     <Box sx={courseStyle}>
